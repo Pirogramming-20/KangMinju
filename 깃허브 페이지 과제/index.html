@@ -24,7 +24,8 @@
             }
             #wrap-center{
                 width: 1280px;
-                height: 500px;
+                height: 1000px;
+                background-color: rgb(29, 66, 66);
                 display: inline-block;
                 color: white;
             }
@@ -99,14 +100,43 @@
                 margin-top: 30px;
                 color : rgb(255,255,255,0.4);
             }
+            #center {
+                text-align: center;
+                justify-content: center;
+                align-items: center;
+                width: 1000px;
+                display: inline-flex;
+                flex-direction: row;
+            }
             #section {
-                margin-top: 100px;
+                margin-top: 50px;
                 text-align: left;
-                font-size: 2.5rem;
+                font-size: 1.5rem;
                 display: inline-flex;
                 flex-direction: column;
             }
-
+            #aside {
+                margin-top: 50px;
+                width: 500px;
+            }
+            #log {
+                display: inline-flex;
+                flex-direction: column;
+                justify-content: center;
+                background-color: pink;
+                width: 400px;
+                height: 500px;
+            }
+            #info {
+                margin-left: 50px;
+                margin-right: 50px;
+                text-align: left;
+            }
+            #info > input {
+                width: 100%;
+                height: 30px;
+                margin-bottom: 30px;
+            }
         </style>
     </head>
     <body>
@@ -136,20 +166,43 @@
                         </a>
                     </div>
                 </div>
-                <div id="section">
-                    <div id="title">
-                        <h1>
-                            Built for<br>
-                            developers
-                        </h1>
+                <div id="center">
+                    <div id="section">
+                        <div id="title">
+                            <h1>
+                                Built for<br>
+                                developers
+                            </h1>
+                        </div>
+                        <div id="detail">
+                            <h5>
+                                GitHub is a development platform inspired by the<br>
+                                way you work. Form open source to,business you<br>
+                                can host and review code, manage projects, and<br>
+                                build software alongside 50 million developers.<br>
+                            </h5>
+                        </div>
                     </div>
-                    <div id="detail">
-                        <h5>
-                            GitHub is a development..
-                        </h5>
+                    <div id="aside">
+                        <form>
+                            <div id="log">
+                                <div id="info">
+                                    UserName<br>
+                                    <input type="text" />
+                                </div>
+                                <div id="info">
+                                    Email<br>
+                                    <input type="text" />
+                                </div>
+                                <div id="info">
+                                    Password<br>
+                                    <input type="password" />
+                                </div>
+                                <div></div>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <div id="aside"></div>
                 <div id="footer">
                     <div id="footer-image">
                         <img src="./git.png">
