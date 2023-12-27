@@ -102,6 +102,8 @@
             }
             #header-hamburger > div {
                 background-image: url("./sp.png");
+                position: relative;
+                z-index: 1;
                 width: 26px;
                 height: 26px;
                 background-position: -335px -81px;
@@ -110,6 +112,7 @@
             }
             #header-hamburger:hover::before {
                 content: '';
+                z-index: 0;
                 position: absolute;
                 left: 1px;
                 top: 1px;
@@ -118,6 +121,14 @@
                 background-color: var(--color_option_bg);
                 border-radius: 50%;
             }
+            .blind {
+                position: absolute;
+                clip: rect(0 0 0 0);
+                width: 1px;
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+            }
         </style>
     </head>
     <body>
@@ -125,7 +136,10 @@
             <div id="wrap-center">
                 <div id="header">
                     <button id="header-hamburger">
+                        <!-- ::before -->
                         <div></div>
+                        <span class="blind">확장영역</span>
+                        <!-- ::after-->
                     </button>
                 </div>
                 <div id="search"></div>
