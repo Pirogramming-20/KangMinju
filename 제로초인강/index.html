@@ -211,13 +211,29 @@
                         box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
                     }
                     #search-svg {
-                        width: 67px;
+                        width: 60px;
                         height: 100%;
                         padding: 17px;
+                        margin-left: 10px;
+                        margin-right: 14px;
                         display: flex;
                         justify-content: center;
                         align-items: center;
                         padding-left: 10px;
+                        position: relative;
+                    }
+                    #search-svg::after {
+                        display: none;
+                    }
+                    #search > form:focus-within #search-svg::after {
+                        content: "";
+                        background-color: #e4e4e4;
+                        width: 1px;
+                        height: 20px;
+                        position: absolute;
+                        display: inline-block;
+                        right: 0.8px;
+                        top: 20px;
                     }
                     #search-svg svg {
                         width: 23.99px;
@@ -279,6 +295,7 @@
                         height: 25px;
                         fill: #03c75a;
                     }
+                
                 </style>
                 <div id="search">
                     <form action="">
