@@ -201,12 +201,11 @@
                 </div>
                 <style>
                     #search > form {
-                        width: 708px;
-                        height: 58px;
-                        top: 70px;
+                        display: inline-block;
+                        width: 708.67px;
+                        height: 60.67px;
                         border: 1px solid #03c75a;
                         border-radius: 33px;
-                        display: inline-block;
                         text-align: left;
                     }
                     #search > form > input {
@@ -220,9 +219,9 @@
                         width: 24px;
                         height: 24px;
                     }
-                    #search > form a {
+                    #search > form a{
                         width: 67px;
-                        height: 58px;
+                        height: 100%;
                         padding: 17px;
                         display: inline-block;
                     }
@@ -230,13 +229,11 @@
                 <div id="search">
                     <form action="">
                         <a href="#">
-                            <svg viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"></path>
-                            </svg>
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z"></path></svg>
                         </a>
                         <label for="search-input" class="blind">검색어 입력</label>
-                        <input id="search-input" type="text"/>
-                        <button class="blind"></button>
+                        <input id="search-input" type="text" placeholder="검색어를 입력하세요." />
+                        <button class="blind">검색</button>
                     </form>
                 </div>
                 <div id="nav"></div>
