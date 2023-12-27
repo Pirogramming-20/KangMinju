@@ -207,6 +207,9 @@
                         border-radius: 33px;
                         text-align: left;
                     }
+                    #search > form:hover {
+                        box-shadow: 0 2px 4px 0 rgba(0,0,0,.12);
+                    }
                     #search-svg {
                         width: 67px;
                         height: 100%;
@@ -231,6 +234,12 @@
                         border: none;
                         outline: none;
                     }
+                    #search-input::placeholder {
+                        color: white;
+                    }
+                    #search-input:focus::placeholder {
+                        color: #e4e4e4;
+                    }
                     #search-right {
                         flex: 1;
                         display: flex;
@@ -251,6 +260,9 @@
                         background-repeat: no-repeat;
                         width: 24px;
                         height: 14px;
+                    }
+                    #search-keyboard:hover::before{
+                        filter: brightness(0.7);
                     }
                     #search-recent::before {
                         content: "";
