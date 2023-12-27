@@ -25,8 +25,8 @@
             #wrap-center{
                 width: 1280px;
                 height: 500px;
-                background-color: yellow;
                 display: inline-block;
+                color: white;
             }
             #header {
                 margin-top: 50px;
@@ -43,8 +43,8 @@
                 float: right;
             }
 
-            #header-left .left-margin {
-                margin-right: 30px;
+            #header .margin {
+                margin-right: 20px;
             }
             #wrap-center {
                 position : relative;
@@ -56,12 +56,57 @@
                 right: 100px;
             }
             #icon > img {
+                margin-left: 30px;
                 width: 25px;
                 height: 25px;
             }
-            .hr {
-                margin-right: 15px;
+            #header-right #text-div {
+                width: 200px;
+                height: 30px;
+                background-color : rgb(255,255,255,0.3);
+                padding: 2px;
+                border-radius: 5px;
             }
+            #header-right #text-style {
+                width: 150px;
+                border: none;
+                background-color: transparent;
+            }
+            input::-webkit-input-placeholder{
+                color: white;
+            }
+            input:focus {
+                outline: none;
+            }
+            #header-right #sign-in-button {
+                background-color: transparent;
+                border: none;
+                color: white;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            #header-right #sign-up-button {
+                background-color: transparent;
+                border: 1px solid white;
+                color: white;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            h1, h5 {
+                margin: 0 0;
+            }
+            #detail {
+                margin-top: 30px;
+                color : rgb(255,255,255,0.4);
+            }
+            #section {
+                margin-top: 100px;
+                text-align: left;
+                font-size: 2.5rem;
+                display: inline-flex;
+                flex-direction: column;
+            }
+
         </style>
     </head>
     <body>
@@ -69,25 +114,41 @@
             <div id="wrap-center">
                 <div id="header">
                     <div id="header-left">
-                        <div id="icon" class="left-margin">
+                        <div id="icon" class="margin">
                             <img src="./icon.png">
                         </div>
-                        <div class="left-margin">Why GitHub?</div>
-                        <div class="left-margin">Team</div>
-                        <div class="left-margin">Enterprise</div>
-                        <div class="left-margin">Explore</div>
-                        <div class="left-margin">Marketplace</div>
-                        <div class="left-margin">Pricing</div>
+                        <div class="margin">Why GitHub? ▼</div>
+                        <div class="margin">Team</div>
+                        <div class="margin">Enterprise</div>
+                        <div class="margin">Explore ▼</div>
+                        <div class="margin">Marketplace</div>
+                        <div class="margin">Pricing ▼</div>
                     </div>
                     <div id="header-right">
-                        <div class="hr">
-                            <input type="text" />
+                        <div id="text-div" class="margin">
+                            <input id="text-style" type="text" placeholder="Search GitHub"/>
                         </div>
-                        <div class="hr">Sign in</div>
-                        <button>Sign up</button>
+                        <a href="#">
+                            <button id="sign-in-button" class="margin">Sign in</button>
+                        </a>
+                        <a href="#">
+                            <button id="sign-up-button" class="margin">Sign up</button>
+                        </a>
                     </div>
                 </div>
-                <div id="section"></div>
+                <div id="section">
+                    <div id="title">
+                        <h1>
+                            Built for<br>
+                            developers
+                        </h1>
+                    </div>
+                    <div id="detail">
+                        <h5>
+                            GitHub is a development..
+                        </h5>
+                    </div>
+                </div>
                 <div id="aside"></div>
                 <div id="footer">
                     <div id="footer-image">
