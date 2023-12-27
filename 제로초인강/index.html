@@ -6,7 +6,8 @@
         <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
         <title>NAVER</title>
         <style>
-            body, html {
+            body,
+            html {
                 margin: 0;
                 padding: 0;
             }
@@ -21,11 +22,21 @@
             #main {
                 height: 2000px;
             }
+            #header {
+                text-align: left;
+            }
             #header-hamburger {
                 margin-top: 18px;
-                background-color: blue;
-                width: 46px;
-                height: 46px;
+                display: inline-block;
+                padding: 10px;
+            }
+            #header-hamburger > div {
+                background-image: url("./sp.png");
+                width: 26px;
+                height: 26px;
+                background-position: -335px -81px;
+                background-repeat: no-repeat;
+                background-size: 433px 412px;
             }
         </style>
     </head>
@@ -34,7 +45,7 @@
             <div id="wrap-center">
                 <div id="header">
                     <div id="header-hamburger">
-
+                        <div></div>
                     </div>
                 </div>
                 <div id="search"></div>
