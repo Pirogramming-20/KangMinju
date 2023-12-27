@@ -1,14 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub</title>
-</head>
-<body>
-    <div id="wrap-center">
-        <div id="header"></div>
-        
-    </div>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GitHub</title>
+        <style>
+            body,
+            html {
+                margin: 0;
+                padding: 0;
+                background-color: #2C3137;
+            }
+            form,
+            ul {
+                margin: 0;
+                padding: 0;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            #wrap {
+                text-align: center;
+            }
+            #wrap-center{
+                width: 1280px;
+                height: 500px;
+                background-color: yellow;
+                display: inline-block;
+            }
+            #header {
+                margin-top: 50px;
+            }
+            #header-left, #header-right {
+                display: flex;
+            }
+            #header-left {
+                position: relative;
+                float: left;
+            }
+            #header-right {
+                position: relative;
+                float: right;
+            }
+
+            #header-left .left-margin {
+                margin-right: 30px;
+            }
+            #wrap-center {
+                position : relative;
+            }
+            #footer-image > img {
+                width: 400px;
+                position: absolute;
+                bottom: 0;
+                right: 100px;
+            }
+            #icon > img {
+                width: 25px;
+                height: 25px;
+            }
+            .hr {
+                margin-right: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="wrap-center">
+                <div id="header">
+                    <div id="header-left">
+                        <div id="icon" class="left-margin">
+                            <img src="./icon.png">
+                        </div>
+                        <div class="left-margin">Why GitHub?</div>
+                        <div class="left-margin">Team</div>
+                        <div class="left-margin">Enterprise</div>
+                        <div class="left-margin">Explore</div>
+                        <div class="left-margin">Marketplace</div>
+                        <div class="left-margin">Pricing</div>
+                    </div>
+                    <div id="header-right">
+                        <div class="hr">
+                            <input type="text" />
+                        </div>
+                        <div class="hr">Sign in</div>
+                        <button>Sign up</button>
+                    </div>
+                </div>
+                <div id="section"></div>
+                <div id="aside"></div>
+                <div id="footer">
+                    <div id="footer-image">
+                        <img src="./git.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
