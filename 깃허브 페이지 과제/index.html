@@ -7,9 +7,10 @@
         <style>
             body,
             html {
+                height: 100%;
                 margin: 0;
                 padding: 0;
-                background-color: #2C3137;
+                background-color: white;
             }
             form,
             ul {
@@ -21,18 +22,22 @@
             }
             #wrap {
                 text-align: center;
+                min-height: 100%;
+                padding-bottom: 114px;
+                position: relative;
+                background-color: #2C3137;
             }
-            #wrap-center{
+            #wrap-center {
                 width: 1280px;
                 height: 1000px;
-                background-color: rgb(29, 66, 66);
                 display: inline-block;
                 color: white;
             }
             #header {
                 margin-top: 50px;
             }
-            #header-left, #header-right {
+            #header-left,
+            #header-right {
                 display: flex;
             }
             #header-left {
@@ -48,7 +53,7 @@
                 margin-right: 20px;
             }
             #wrap-center {
-                position : relative;
+                position: relative;
             }
             #footer-image > img {
                 width: 400px;
@@ -64,7 +69,7 @@
             #header-right #text-div {
                 width: 200px;
                 height: 30px;
-                background-color : rgb(255,255,255,0.3);
+                background-color: rgb(255,255,255,0.3);
                 padding: 2px;
                 border-radius: 5px;
             }
@@ -73,7 +78,7 @@
                 border: none;
                 background-color: transparent;
             }
-            input::-webkit-input-placeholder{
+            input::-webkit-input-placeholder {
                 color: white;
             }
             input:focus {
@@ -93,12 +98,17 @@
                 border-radius: 5px;
                 cursor: pointer;
             }
-            h1, h5 {
-                margin: 0 0;
+            h1,
+            h5 {
+                margin: 0;
+            }
+            #detail,
+            #title {
+                margin-right: 100px;
             }
             #detail {
                 margin-top: 30px;
-                color : rgb(255,255,255,0.4);
+                color: rgb(255,255,255,0.4);
             }
             #center {
                 text-align: center;
@@ -123,19 +133,44 @@
                 display: inline-flex;
                 flex-direction: column;
                 justify-content: center;
-                background-color: pink;
-                width: 400px;
-                height: 500px;
+                background-color: white;
+                border-radius: 10px;
+                width: 450px;
+                height: 550px;
+                color: black;
             }
-            #info {
-                margin-left: 50px;
-                margin-right: 50px;
+            #aside-margin {
+                margin-left: 20px;
+                margin-right: 20px;
                 text-align: left;
             }
-            #info > input {
+            #aside-margin > input {
                 width: 100%;
-                height: 30px;
-                margin-bottom: 30px;
+                height: 40px;
+                border-radius: 10px;
+                border: 1px solid rgb(192, 192, 192);
+            }
+            #sign-up-Git {
+                width: 100%;
+                height: 70px;
+                background-color: #2EBC4E;
+                border: none;
+                border-radius: 10px;
+                color: white;
+                font-size: large;
+                cursor: pointer;
+            }
+            #notice {
+                font-size: small;
+                font-weight: 100;
+            }
+            #notice:last-of-type {
+                margin-top: 20px;
+            }
+            .footer-div {
+                width: 100%;
+                height: 300px;
+                background-color: red !important;
             }
         </style>
     </head>
@@ -176,37 +211,54 @@
                         </div>
                         <div id="detail">
                             <h5>
-                                GitHub is a development platform inspired by the<br>
-                                way you work. Form open source to,business you<br>
-                                can host and review code, manage projects, and<br>
-                                build software alongside 50 million developers.<br>
+                                GitHub is a development platform inspired by the way you work. Form open source
+                                to,business you can host and review code, manage projects, and build software
+                                alongside 50 million developers.
                             </h5>
                         </div>
                     </div>
                     <div id="aside">
                         <form>
                             <div id="log">
-                                <div id="info">
-                                    UserName<br>
-                                    <input type="text" />
+                                <div id="aside-margin">
+                                    <p>UserName</p>
+                                    <input type="text"/>
                                 </div>
-                                <div id="info">
-                                    Email<br>
-                                    <input type="text" />
+                                <div id="aside-margin">
+                                    <p>Email</p>
+                                    <input type="text"/>
                                 </div>
-                                <div id="info">
-                                    Password<br>
-                                    <input type="password" />
+                                <div id="aside-margin">
+                                    <p>Password</p>
+                                    <input type="password"/>
                                 </div>
-                                <div></div>
+                                <div id="aside-margin">
+                                    <p id="notice">
+                                        Make sure it's at least 15 characters OR at least 8 characters including a
+                                        number and a lowercase letter. Learn more.
+                                    </p>
+                                </div>
+                                <div id="aside-margin">
+                                    <a href="#">
+                                        <button id="sign-up-Git">Sign up for GitHub</button>
+                                    </a>
+                                </div>
+                                <div id="aside-margin">
+                                    <p id="notice">
+                                        By cliking "Sign up for GitHub", you agree to our Terms of Service and Privacy
+                                        Statement. We'll occasionally send you account related emails.
+                                    </p>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div id="footer">
-                    <div id="footer-image">
+            </div>
+            <div id="footer-div">
+                <div>
+                    <footer id="footer-image">
                         <img src="./git.png">
-                    </div>
+                    </footer>
                 </div>
             </div>
         </div>
