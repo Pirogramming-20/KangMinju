@@ -1,0 +1,11 @@
+{
+    "items": [
+        {
+            "type": "tshirt",
+            "gender" : "female",
+            "size": "large",
+            "color": "pink",
+            "image": "./imgs/pink_t.png"
+        }    
+    ]
+}
