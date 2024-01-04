@@ -120,7 +120,7 @@ body {
 
 }
 #listContainer >li {
-    margin: 20px;
+    padding: 15px;
     display: flex;
     gap: 10px;
     align-items: center;
@@ -132,6 +132,14 @@ body {
     height: 22px;
     display: block;
     background-size: cover;
+}
+#listContainer >li.checked::before {
+    content: "";
+    background-image: url(images/todo_icon_fill.svg);
+    background-size: cover;
+    width: 22px;
+    height: 22px;
+    display: block;
 }
 #taskInput {
     background-color: transparent;
