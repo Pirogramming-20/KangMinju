@@ -15,4 +15,9 @@ while num < 31:
 
         for i in range(count):
             num += 1
+            if num > 31:
+                break
             print(f"{player} : {num}")
+            
+        if num >= 31:
+                break
