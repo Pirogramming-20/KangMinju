@@ -23,8 +23,14 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+@font-face {
+    font-family: 'seolleimcool-SemiBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/seolleimcool-SemiBold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal; }
 body {
 	line-height: 1;
+    font-family: 'seolleimcool-SemiBold';
 }
 ol, ul {
 	list-style: none;
@@ -47,7 +53,6 @@ table {
     align-items: center;
     flex-direction: column;
     height: 100vh;
-    background-color: aqua;
 }
 header {
     display: flex;
@@ -60,25 +65,104 @@ h1 {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin:20px;
+    margin-top: 20px;
+    padding:20px;
+    background-color: pink;
+    border-radius: 10px;
+    width: 200px;
+    box-shadow: 5px 5px 5px lightgrey;
 }
 .clock > #time {
     margin-bottom: 20px;
+    width: 150px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
 }
 #time >span {
-    font-size: 3rem;
+    padding: 0;
+    margin: 0;
+    font-size: 2.5rem;
+}
+#time > span:nth-child(1)::after {
+    content: ":";
+    margin-left: 8px;
 }
 #btn {
     display: flex;
     flex-direction: row;
     cursor: pointer;
 }
+#startBtn, #stopBtn, #resetBtn {
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
 #stopBtn {
     margin: 0 20px;
 }
+.record {
+    width: 300px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
 #recordHeader {
     display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: pink;
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
 }
 #recordHeader > p {
-    margin: 0 20px;
+    margin: 0 40px;
+}
+.check, .clickAdd {
+    border: 1px solid black;
+    width: 14px;
+    height: 14px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.clickAdd {
+    margin-right: 45px;
+}
+#delete {
+    cursor: pointer;
+}
+#delete:hover {
+    color: red;
+}
+#recordMain {
+    display: flex;
+    flex-direction: column;
+    max-height: 200px;
+    min-height: 200px;
+    overflow-y: auto;
+}
+#recordMain > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 30px;
+}
+#recordMain > div > div:nth-child(2) {
+    margin-left: 40px;
+}
+#recordMain::-webkit-scrollbar {
+    background-color: white;
+    width: 10px;
+}
+#recordMain::-webkit-scrollbar-thumb {
+    background-color: pink; 
+}
+
+#recordMain::-webkit-scrollbar-track {
+    background-color: white;
 }
