@@ -1,0 +1,6 @@
+<h1>피로게시판</h1>
+<a href="/posts/create">글 작성하러 가기</a>
+{% for post in posts %}
+    <!-- id 가 필드에 없는데 사용가능한 이유는 id는 장고에서 부여한 고유한 값이기때문-->
+    <p><a href="/posts/{{post.id}}">{{post.id}}. {{post.title}} </a></p>
+{% endfor %}
