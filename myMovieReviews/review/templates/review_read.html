@@ -1,15 +1,27 @@
-<h3><a href="/review/">myMoviereviews</a></h3>
-<h3>{{movie.title}}</h3>
-<h3>{{movie.director}}</h3>
-<h3>{{movie.actor}}</h3>
-<h3>{{ movie.get_genre_display }}</h3>
-<h3>{{movie.rating}}</h3>
-{% if hours or minutes %}
-    <h3>{{ hours }}시간{{ minutes }}분</h3>
-{% endif %}
-<h3>{{movie.review}}</h3>
-<a href="/review/{{movie.id}}/update">수정하기</a>
-<form action="/review/{{movie.id}}/delete" method="post">
-    {%csrf_token%}
-    <input type="submit" value="삭제하기">
-</form>
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Movie reviews</title>
+    </head>
+    <body>
+        <h3>
+            <a href="/review/">myMoviereviews</a>
+        </h3>
+        <h3>{{movie.title}}</h3>
+        <h3>{{movie.director}}</h3>
+        <h3>{{movie.actor}}</h3>
+        <h3>{{ movie.get_genre_display }}</h3>
+        <h3>{{movie.rating}}</h3>
+        {% if hours or minutes %}
+            <h3>{{ hours }}시간{{ minutes }}분</h3>
+        {% endif %}
+        <h3>{{movie.review}}</h3>
+        <a href="/review/{{movie.id}}/update">수정하기</a>
+        <form action="/review/{{movie.id}}/delete" method="post">
+            {%csrf_token%}
+            <input type="submit" value="삭제하기">
+        </form>
+    </body>
+</html>

@@ -1,25 +1,36 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>My movie reviews</title>
 </head>
 <body>
-    <h3>myMoviereviews</h3>
-    <a href="/review/create">Add a New review</a>
-    <form method="get" action="">
-        <label for="sort_by">정렬 기준:</label>
-        <select name="sort_by" id="sort_by">
-            <option value="title" {% if request.GET.sort_by == 'title' %}selected{% endif %}>제목 이름</option>
-            <option value="rating" {% if request.GET.sort_by == 'rating' %}selected{% endif %}>별점</option>
-            <option value="time" {% if request.GET.sort_by == 'time' %}selected{% endif %}>상영 시간</option>
-        </select>
-        <input type="submit" value="적용">
-    </form>
-    {% for movie in movies%}
-    <p><a href="/review/{{movie.id}}">{{movie.title}}</a></p>
-    <p>{{movie.year}} {{ movie.get_genre_display }} {{movie.rating}}</p>
-    {% endfor %}
+    <header>
+        <h2>my<span>Movie</span>reviews</h2>
+        <a href="/review/create">Add a New review</a>
+    </header>
+    <hr>
+    <div class="container">
+        <form method="get" action="">
+            <label for="sort_by">정렬 기준:</label>
+            <select name="sort_by" id="sort_by">
+                <option value="title" {% if request.GET.sort_by == 'title' %}selected{% endif %}>제목 이름</option>
+                <option value="rating" {% if request.GET.sort_by == 'rating' %}selected{% endif %}>별점</option>
+                <option value="time" {% if request.GET.sort_by == 'time' %}selected{% endif %}>상영 시간</option>
+            </select>
+            <input type="submit" value="적용">
+        </form>
+        <div class="movie_container">
+            {% for movie in movies%}
+                <div class="movie_div">
+                    <p><a href="/review/{{movie.id}}">{{movie.title}}</a></p>
+                    <p>{{movie.year}} {{ movie.get_genre_display }} {{movie.rating}}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 </body>
 </html>

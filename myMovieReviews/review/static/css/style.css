@@ -1,0 +1,36 @@
+:root {
+    --main-color: #FF0558;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 20px;
+}
+header > a {
+    text-decoration: none;
+    color: gray;
+}
+header > a:hover {
+    color : var(--main-color)
+}
+header > h2 > span{
+    color: var(--main-color)
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 70px;
+    background-color: lightgray;
+}
+.container > form {
+    display: flex;
+    justify-content: flex-end;
+}
+.container > .movie_container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) 
+}
+.movie_container > .movie_div {
+    display: flex;
+}
