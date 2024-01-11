@@ -9,15 +9,19 @@
         <h1>
             리뷰 작성하기
         </h1>
-
         <form action="/review/create" method="post">
             {% csrf_token %}
             제목:<input name="title" />
             <br/>
             개봉년도:<input name="year" />
             <br/>
-            장르:<input name="genre" />
-            <br/>
+            장르:
+            <select name="genre">
+                <option value="------" selected>-----</option>
+                {% for genre_code, genre_label in GENRE_CHOICES %}
+                    <option value="{{ genre_code }}">{{ genre_label }}</option>
+                {% endfor %}
+            </select><br/>      
             별점:<input name="rating" />
             <br/>
             러닝타임:<input name="time" />

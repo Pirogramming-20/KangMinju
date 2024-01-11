@@ -16,8 +16,13 @@
             <br/>
             개봉년도:<input name="year" value="{{movie.year}}"/>
             <br/>
-            장르:<input name="genre" value="{{movie.genre}}"/>
-            <br/>
+            장르:
+            <select name="genre">
+                <option value="------" selected>-----</option>
+                {% for genre_code, genre_label in GENRE_CHOICES %}
+                    <option value="{{ genre_code }}" {% if genre_code == movie.genre %}selected{% endif %}>{{ genre_label }}</option>
+                {% endfor %}
+            </select><br/> 
             별점:<input name="rating" value="{{movie.rating}}"/>
             <br/>
             러닝타임:<input name="time" value="{{movie.time}}"/>
