@@ -1,0 +1,12 @@
+<h3>{{movie.title}}</h3>
+<h3>{{movie.director}}</h3>
+<h3>{{movie.actor}}</h3>
+<h3>{{movie.genre}}</h3>
+<h3>{{movie.rating}}</h3>
+<h3>{{movie.time}}</h3>
+<h3>{{movie.review}}</h3>
+<a href="/review/{{movie.id}}/update">수정하기</a>
+<form action="/review/{{movie.id}}/delete" method="post">
+    {%csrf_token%}
+    <input type="submit" value="삭제하기">
+</form>

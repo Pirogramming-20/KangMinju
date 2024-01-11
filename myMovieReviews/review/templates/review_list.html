@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My movie reviews</title>
+</head>
+<body>
+    <h3>myMoviereviews</h3>
+    <a href="/review/create">Add a New review</a>
+    {% for movie in movies%}
+    <p><a href="/review/{{movie.id}}">{{movie.id}}. {{movie.title}} {{movie.year}} {{movie.genre}} {{movie.rating}}</a></p>
+    {% endfor %}
+</body>
+</html>

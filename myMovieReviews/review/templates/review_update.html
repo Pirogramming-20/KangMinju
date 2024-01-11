@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Movie reviews</title>
+    </head>
+    <body>
+        <h1>
+            리뷰 수정하기
+        </h1>
+
+        <form action="/review/{{movie.id}}/update" method="post">
+            {% csrf_token %}
+            제목:<input name="title" value="{{movie.title}}"/>
+            <br/>
+            개봉년도:<input name="year" value="{{movie.year}}"/>
+            <br/>
+            장르:<input name="genre" value="{{movie.genre}}"/>
+            <br/>
+            별점:<input name="rating" value="{{movie.rating}}"/>
+            <br/>
+            러닝타임:<input name="time" value="{{movie.time}}"/>
+            <br/>
+            리뷰:<br><textarea name="review" cols="30" rows="10">{{movie.review}}</textarea>
+            <br/>
+            감독:<input name="director" value="{{movie.director}}"/>
+            <br/>
+            배우:<input name="actor" value="{{movie.actor}}"/>
+            <br/>
+            <div>
+                <input type="submit" value="save">
+            </div>
+        </form>
+    </body>
+</html>
