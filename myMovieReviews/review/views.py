@@ -9,7 +9,9 @@ def review_list(request):
     if sort_by == 'rating':
         movies = sorted(movies, key=lambda movie: float(movie.rating), reverse=True) 
     elif sort_by == 'time':
-        movies = sorted(movies, key=lambda movie: int(movie.time))  
+        movies = sorted(movies, key=lambda movie: int(movie.time)) 
+    elif sort_by == 'year':
+        movies = sorted(movies, key=lambda movie: int(movie.year), reverse=True)   
     else:
         movies = movies.order_by('title')
     
@@ -23,7 +25,6 @@ def review_list(request):
     context = {
         'info_list': info_list,
     }
-    print(movie_durations)
     return render(request, 'review_list.html', context)
 
 def review_read(request, pk):
