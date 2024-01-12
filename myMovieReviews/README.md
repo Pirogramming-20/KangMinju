@@ -19,3 +19,4 @@ have to - css
 
 ⚪ JS, CSS ⚪
 1. 삭제버튼 누르면 confirm을 통해 삭제 여부 확인 후 삭제 <br>
+2. review_list 반응형 추가 (4col 2col 1col)
