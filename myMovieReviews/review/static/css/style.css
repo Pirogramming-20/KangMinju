@@ -138,3 +138,57 @@ select {
     padding: 30px;
     min-height: 150px;
 }
+.up_cr_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.up_cr_container {
+    background-color:var(--background-color);
+    margin-top: 20px;
+    width: 40%;
+    min-height: 70vh;
+    border-radius: 10px;
+}
+.up_cr_container textarea {
+margin-top: 0;
+margin-bottom: 0;
+padding: 5px;
+width: 80%;
+height: 100px;
+font-size: 15px;
+background-color: rgb(255, 255, 255);
+color: black;
+border-radius: 10px;
+border: none;
+outline: none;
+}
+.up_cr_container > * {
+    margin: 20px 50px;
+    font-size: 1.2rem;
+}
+.up_cr_container > h3 {
+    display: flex;
+    justify-content: center;
+}
+.up_cr_container > h3 > span{
+    color: var(--main-color);
+}
+.up_cr_container input {
+    width: 30%px;
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 10px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(255, 255, 255);
+}
+.save_btn {
+    float: inline-end;
+    margin-bottom: 30px;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+}

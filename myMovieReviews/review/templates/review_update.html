@@ -1,40 +1,42 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ko">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <title>My Movie reviews</title>
     </head>
     <body>
-        <h1>
-            리뷰 수정하기
-        </h1>
-
-        <form action="/review/{{movie.id}}/update" method="post">
-            {% csrf_token %}
-            제목:<input name="title" value="{{movie.title}}"/>
-            <br/>
-            개봉년도:<input name="year" value="{{movie.year}}"/>
-            <br/>
-            장르:
-            <select name="genre">
+        <header>
+            <h2 class="go_list"><a href="/review/">my<span>Movie</span>reviews</a></h2>
+            <a href="/review/create">Add a New review</a>
+        </header>
+        <hr>
+        <form action="/review/{{movie.id}}/update" method="post" class="up_cr_form">
+        <div class="up_cr_container">
+                {% csrf_token %}
+                <h3><span>Movie</span>&nbsp;review 🍿</h3>
+                <hr>
+                <p>제목 : <input name="title" value="{{movie.title}}"/></p>
+                <p>개봉년도 : <input name="year" value="{{movie.year}}"/></p>
+                <p>장르 :
+                    <select name="genre">
                 <option value="------" selected>-----</option>
                 {% for genre_code, genre_label in GENRE_CHOICES %}
                     <option value="{{ genre_code }}" {% if genre_code == movie.genre %}selected{% endif %}>{{ genre_label }}</option>
                 {% endfor %}
-            </select><br/> 
-            별점:<input name="rating" value="{{movie.rating}}"/>
-            <br/>
-            러닝타임:<input name="time" value="{{movie.time}}"/>
-            <br/>
-            리뷰:<br><textarea name="review" cols="30" rows="10">{{movie.review}}</textarea>
-            <br/>
-            감독:<input name="director" value="{{movie.director}}"/>
-            <br/>
-            배우:<input name="actor" value="{{movie.actor}}"/>
-            <br/>
-            <div>
-                <input type="submit" value="save">
+                    </p>
+            </select>
+                </p>
+                <p>별점 : <input name="rating" value="{{movie.rating}}"/></p>
+                <p>러닝타임 : <input name="time" value="{{movie.time}}"/></p>
+                <p>리뷰 :</p><textarea name="review" cols="30" rows="10">{{movie.review}}</textarea>
+                <p>감독 : <input name="director" value="{{movie.director}}"/></p>
+                <p>배우 : <input name="actor" value="{{movie.actor}}"/></p>
+                <div>
+                    <input type="submit" value="save" class="save_btn">
+                </div>
             </div>
         </form>
     </body>
