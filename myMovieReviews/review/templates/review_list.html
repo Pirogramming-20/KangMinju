@@ -13,24 +13,27 @@
         <a href="/review/create">Add a New review</a>
     </header>
     <hr>
-    <div class="container">
+    <div class="list_container">
         <form method="get" action="">
-            <label for="sort_by">정렬 기준:</label>
+            <label for="sort_by">정렬 기준 : &nbsp;</label>
             <select name="sort_by" id="sort_by">
-                <option value="title" {% if request.GET.sort_by == 'title' %}selected{% endif %}>제목 이름</option>
-                <option value="rating" {% if request.GET.sort_by == 'rating' %}selected{% endif %}>별점</option>
-                <option value="time" {% if request.GET.sort_by == 'time' %}selected{% endif %}>상영 시간</option>
+                <option value="title" {% if request.GET.sort_by == 'title' %}selected{% endif %}>제목 이름순</option>
+                <option value="rating" {% if request.GET.sort_by == 'rating' %}selected{% endif %}>별점순</option>
+                <option value="time" {% if request.GET.sort_by == 'time' %}selected{% endif %}>상영 시간순</option>
             </select>
             <input type="submit" value="적용">
         </form>
         <div class="movie_container">
-            {% for movie in movies%}
-                <div class="movie_div">
-                    <p><a href="/review/{{movie.id}}">{{movie.title}}</a></p>
-                    <p>{{movie.year}} {{ movie.get_genre_display }} {{movie.rating}}</p>
-                </div>
+            {% for movie, duration in info_list %}
+                    <div class="movie_div">
+                        <h2><a href="/review/{{ movie.id }}">{{ movie.title }}</a></h2>
+                        <p><span>개봉년도</span> {{ movie.year }}</p>
+                        <p><span>장르</span> {{ movie.get_genre_display }}</p>
+                        <p><span>별점</span> {{ movie.rating }}</p>
+                        <p><span>상영시간</span> {{ duration.hours }}시간 {{ duration.minutes }}분</p>
+                    </div>
             {% endfor %}
-        </div>
+        </div>                
     </div>
 </body>
 </html>

@@ -1,27 +1,48 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ko">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <title>My Movie reviews</title>
     </head>
     <body>
-        <h3>
-            <a href="/review/">myMoviereviews</a>
-        </h3>
-        <h3>{{movie.title}}</h3>
-        <h3>{{movie.director}}</h3>
-        <h3>{{movie.actor}}</h3>
-        <h3>{{ movie.get_genre_display }}</h3>
-        <h3>{{movie.rating}}</h3>
-        {% if hours or minutes %}
-            <h3>{{ hours }}시간{{ minutes }}분</h3>
-        {% endif %}
-        <h3>{{movie.review}}</h3>
-        <a href="/review/{{movie.id}}/update">수정하기</a>
-        <form action="/review/{{movie.id}}/delete" method="post">
-            {%csrf_token%}
-            <input type="submit" value="삭제하기">
-        </form>
+        <header>
+            <h2 class="go_list"><a href="/review/">my<span>Movie</span>reviews</a></h2>
+            <a href="/review/create">Add a New review</a>
+        </header>
+        <hr>
+        <div class="read_container">
+            <div class="read_container_header">
+                <h1>{{movie.title}}</h1>
+                <div class="fix_delete">
+                    <a href="/review/{{movie.id}}/update">수정&nbsp;&nbsp;</a>
+                    <form action="/review/{{movie.id}}/delete" method="post" onsubmit="return confirmDelete()">
+                        {%csrf_token%}
+                        <button type="submit" class="delete-button">삭제</button>
+                    </form>
+                </div>
+            </div>
+            <div class="read_main">
+                <h3><span>개봉년도 </span>{{movie.year}}</h3>
+                <h3><span>감독 </span>{{movie.director}}</h3>
+                <h3><span>주연 </span>{{movie.actor}}</h3>
+                <h3><span>장르 </span>{{ movie.get_genre_display }}</h3>
+                <h3><span>별점 </span>{{movie.rating}}</h3>
+                <h3><span>러닝타임 </span>
+                {% if hours or minutes %}
+                    {{ hours }}시간{{ minutes }}분</h3>
+                {% endif %}
+            </div>
+            <div class="read_review">
+                <h3>{{movie.review}}</h3>
+            </div>
+        </div>
+        <script>
+            function confirmDelete() {
+                return confirm("정말 삭제하시겠습니까?");
+            }
+        </script>
     </body>
 </html>

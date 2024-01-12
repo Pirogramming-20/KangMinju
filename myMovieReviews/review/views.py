@@ -7,15 +7,23 @@ def review_list(request):
     sort_by = request.GET.get('sort_by')
     
     if sort_by == 'rating':
-        movies = movies.order_by('rating')
+        movies = sorted(movies, key=lambda movie: float(movie.rating), reverse=True) 
     elif sort_by == 'time':
-        movies = movies.order_by('time')
+        movies = sorted(movies, key=lambda movie: int(movie.time))  
     else:
         movies = movies.order_by('title')
-        
+    
+    movie_durations = []
+    for movie in movies:
+        total_minutes = int(movie.time)
+        hours = total_minutes // 60
+        minutes = total_minutes % 60
+        movie_durations.append({"hours": hours, "minutes": minutes})
+    info_list = zip(movies, movie_durations)
     context = {
-        "movies" : movies
+        'info_list': info_list,
     }
+    print(movie_durations)
     return render(request, 'review_list.html', context)
 
 def review_read(request, pk):

@@ -1,5 +1,10 @@
 :root {
     --main-color: #FF0558;
+    --background-color: rgb(230, 230, 230);
+}
+a{
+    text-decoration: none;
+    color: gray;
 }
 header {
     display: flex;
@@ -7,30 +12,129 @@ header {
     align-items: center;
     margin: 0 20px;
 }
-header > a {
-    text-decoration: none;
-    color: gray;
-}
 header > a:hover {
     color : var(--main-color)
 }
 header > h2 > span{
     color: var(--main-color)
 }
-.container {
+.list_container {
     display: flex;
     flex-direction: column;
-    margin: 70px;
-    background-color: lightgray;
+    margin: 0 150px;
+    margin-top: 100px;
 }
-.container > form {
+.list_container > form {
     display: flex;
     justify-content: flex-end;
 }
-.container > .movie_container {
+.list_container > .movie_container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr) 
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 30px;
+    gap: 20px;
 }
-.movie_container > .movie_div {
+.movie_container > .movie_div{
+    background-color: var(--background-color);
+    grid-column: span 1;
+    border-radius: 10px;
+}
+.movie_container > .movie_div > * {
+    margin-left: 20px;
+}
+.movie_container > .movie_div a{
+    text-decoration: none;
+    color: black;
+}
+.movie_container > .movie_div a:hover{
+    color: var(--main-color);
+}
+.movie_container > .movie_div span{
+    color: rgb(107, 107, 107);
+}
+
+form {
     display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+select {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.list_container [type="submit"] {
+    background-color: var(--main-color);
+    color: white;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.list_container [type="submit"]:hover {
+    background-color: #ff0558b0;
+}
+
+.go_list  a{
+    text-decoration: none;
+    color: black;
+}
+.go_list  span {
+    color: var(--main-color);
+}
+.go_list :hover{
+    opacity: 0.6;
+}
+.read_container {
+    margin: 0 150px;
+    margin-top: 100px;
+}
+.read_container_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.read_container_header a {
+    font-size: 1.2rem;
+    margin-top: 1px;
+}
+.read_container_header [type="submit"] {
+    background-color: transparent;
+    font-size: 1.2rem;
+    color: gray;
+    border: none;
+    cursor: pointer;
+}
+.read_container_header button:hover,
+.read_container_header a:hover {
+    color: var(--main-color);
+}
+.read_container_header > .fix_delete{
+    display: flex;
+}
+.read_main > * {
+    margin-left: 20px;
+}
+.read_main  span {
+    color: rgb(107, 107, 107);
+}
+.read_main {
+    background-color: var(--background-color);
+    border-radius: 5px;
+    padding: 10px 0;
+}
+.read_review {
+    background-color: var(--background-color);
+    border-radius: 5px;
+}
+.read_review > h3 {
+    padding: 30px;
+    min-height: 150px;
 }
