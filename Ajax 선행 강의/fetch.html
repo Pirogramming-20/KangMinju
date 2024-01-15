@@ -5,16 +5,18 @@
 
         </article>
         <input type="button" value="fetch" onclick="
-        /*fetch('html').then(function(response){
+        /*fetch('html').then(function(response){ -> 익명함수다
             response.text().then(function(text){
                 document.querySelector('article').innerText = text;
             })
         })*/
         //Asynchronous
-        function callbackme() {
-            console.log('response end');
-        }
-        fetch('html').then(callbackme);
+        fetch('javascript').then(function(response){
+            console.log(response.status);
+            if(response.status == '404') {
+                alert('NOT FOUND')
+            }
+        });
         console.log(1);
         console.log(2);
         ">
