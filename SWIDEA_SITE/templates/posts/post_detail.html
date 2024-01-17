@@ -9,7 +9,11 @@
   {% endif %}
   <h2>{{post.title}}</h2>
   <p>1)아이디어 관심도<br> {{post.interest}}</p>
-  <p>2)예상 개발 툴<br> </p>
+  <p>2)예상 개발 툴<br> 
+    <a href="{% url 'devtools:detail' post.devtool.pk  %}">
+    {{post.devtool}}
+    </a>      
+  </p>
   <p>3)아이디어 설명<br> {{post.content}}</p>
   <form action="{% url 'posts:delete' post.pk%}" method="POST">
     {%csrf_token%}

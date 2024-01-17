@@ -5,6 +5,16 @@ from .models import Post
 # Create your views here.
 def main(request) :
     posts = Post.objects.all()
+    sort_by = request.GET.get('sort_by')
+    
+    if sort_by == 'interest':
+        posts = sorted(posts, key=lambda post: int(post.interest), reverse=True) 
+    # if sort_by == 'newest':
+    #     posts = sorted(posts, key=lambda post: int(post.newest)) 
+    # elif sort_by == 'written':
+    #     posts = sorted(posts, key=lambda post: int(post.written))   
+    else:
+        posts = posts.order_by('title') 
     ctx = {'posts' : posts }
     return render(request, 'posts/post_list.html', ctx)
 

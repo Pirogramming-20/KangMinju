@@ -9,6 +9,16 @@
 
   <div class="content-wrapper">
     <!-- 글 목록 -->
+    <form method="get" action="">
+      <label for="sort_by">정렬 기준 : &nbsp;</label>
+      <select name="sort_by" id="sort_by">
+          <option value="title" {% if request.GET.sort_by == 'title' %}selected{% endif %}>이름순</option>
+          {% comment %} <option value="newest" {% if request.GET.sort_by == 'newest' %}selected{% endif %}>최신순</option>
+          <option value="written" {% if request.GET.sort_by == 'written' %}selected{% endif %}>등록순</option> {% endcomment %}
+          <option value="interest" {% if request.GET.sort_by == 'interest' %}selected{% endif %}>관심도순</option>
+      </select>
+      <input type="submit" value="적용">
+    </form>
     {% for post in posts%}
     <div class="item">
       {% if post.photo.url != null and post.photo.url != ''%}
