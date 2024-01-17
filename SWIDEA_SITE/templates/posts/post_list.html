@@ -1,39 +1,82 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{%block head%}
+{% block head %}
   <title>Documents</title>
-{%endblock%}
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $(".interest-button").on("click", function () {
+        var postId = $(this).data("post-id");
+        var actionType = $(this).data("action-type");
 
-{%block content%}
+        // AJAX 요청
+        $.ajax({
+          url: '/interest/',
+          type: 'POST',
+          data: {
+            'pk': postId,
+            'check': actionType
+          },
+          success: function (data) {
+            // 서버에서 받은 데이터로 관심도 업데이트
+            $("#interest-" + postId).text(data.interest);
+          },
+          error: function () {
+            console.log('AJAX 요청 실패');
+          },
+          headers: {
+            'X-CSRFToken': '{{ csrf_token }}'
+          }
+        });
+      });
+    });
+  </script>
+{% endblock %}
 
+{% block content %}
   <div class="content-wrapper">
     <!-- 글 목록 -->
     <form method="get" action="">
       <label for="sort_by">정렬 기준 : &nbsp;</label>
       <select name="sort_by" id="sort_by">
-          <option value="title" {% if request.GET.sort_by == 'title' %}selected{% endif %}>이름순</option>
-          {% comment %} <option value="newest" {% if request.GET.sort_by == 'newest' %}selected{% endif %}>최신순</option>
-          <option value="written" {% if request.GET.sort_by == 'written' %}selected{% endif %}>등록순</option> {% endcomment %}
-          <option value="interest" {% if request.GET.sort_by == 'interest' %}selected{% endif %}>관심도순</option>
+        <option value="title">이름순</option>
+        <option value="pk">등록순</option>
+        <option value="updated_date">최신순</option>
+        <option value="interest">관심도순</option>
+        <option value="star">찜하기순</option>
       </select>
       <input type="submit" value="적용">
     </form>
-    {% for post in posts%}
-    <div class="item">
-      {% if post.photo.url != null and post.photo.url != ''%}
-      <img src="{{post.photo.url}}" alt="대체텍스트"> 
-      {%else %}
-      <img src="{% static 'posts/image/no_img.png'%}" alt="이미지가 없습니다"> 
-      {%endif%}
-      <div class="info">
-        <a href="{% url 'posts:detail' post.pk %}" class="title">
-          {{post.title}}
-        </a>
-        <p class="region">예상 개발 툴 : </p>
-        <p class="price">아이디어 관심도 : {{post.interest}}</p>
+    {% for post in posts %}
+      <div class="item">
+        {% if post.photo.url != null and post.photo.url != '' %}
+        <div class="image-container">
+          <img src="{{ post.photo.url }}" alt="대체텍스트">
+          <a class="star-icon" href="{% url 'posts:star_list' post.pk %}">
+            {% if not post.star %}
+              <i class="fa-regular fa-star outline"></i>
+            {% else %}
+              <i class="fa-solid fa-star fill check"></i>
+            {% endif %}
+          </a>
+        </div>
+          </a>
+        {% else %}
+          <img src="{% static 'posts/image/no_img.png' %}" alt="이미지가 없습니다"> 
+        {% endif %}
+        <div class="info">
+          <a href="{% url 'posts:detail' post.pk %}" class="title">
+            {{ post.title }}
+          </a>
+          <p class="devtool">예상 개발 툴 : {{ post.devtool }}</p>
+          <p class="interest">아이디어 관심도 :
+            <button class="interest-button" data-post-id="{{ post.pk }}" data-action-type="increase">+</button>
+            <span id="interest-{{ post.pk }}">{{ post.interest }}</span>
+            <button class="interest-button" data-post-id="{{ post.pk }}" data-action-type="decrease">-</button>
+          </p>
+        </div>
       </div>
-    </div>
     {% endfor %}
   </div>
-{%endblock%}
+{% endblock %}

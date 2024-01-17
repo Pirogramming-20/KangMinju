@@ -1,20 +1,22 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import PostForm
 from .models import Post
-
+from django.http import JsonResponse
 # Create your views here.
 def main(request) :
     posts = Post.objects.all()
-    sort_by = request.GET.get('sort_by')
+    sort = request.GET.get('sort_by')
     
-    if sort_by == 'interest':
-        posts = sorted(posts, key=lambda post: int(post.interest), reverse=True) 
-    # if sort_by == 'newest':
-    #     posts = sorted(posts, key=lambda post: int(post.newest)) 
-    # elif sort_by == 'written':
-    #     posts = sorted(posts, key=lambda post: int(post.written))   
-    else:
-        posts = posts.order_by('title') 
+    if sort == 'title':
+        posts = posts.order_by('title')
+    elif sort == 'pk':
+        posts= posts.order_by('pk')
+    elif sort == 'updated_date':
+        posts = posts.order_by('-pk')
+    elif sort == 'interest':
+        posts = posts.order_by('-interest')
+    elif sort == 'star':
+        posts = posts.order_by('-star')
     ctx = {'posts' : posts }
     return render(request, 'posts/post_list.html', ctx)
 
@@ -48,4 +50,40 @@ def update(request, pk):
     form = PostForm(request.POST, request.FILES, instance=post)
     if form.is_valid():
         form.save()
+    return redirect('posts:detail', pk)
+
+def interest(request):
+    if request.method == 'POST':
+        pk = request.POST.get('pk', None)
+        check = request.POST.get('check', None)
+        post = get_object_or_404(Post, id=pk)
+
+        if check == 'increase':
+            post_interest = post.interest + 1
+        else:
+            post_interest = post.interest - 1
+
+        post.interest = post_interest
+        post.save()
+
+        return JsonResponse({'interest': post_interest})
+    else:
+        pass
+    
+def star_list(request, pk):
+    star_toggle = Post.objects.get(id=pk)
+    if star_toggle.star:
+        star_toggle.star = False
+    else:
+        star_toggle.star = True
+    star_toggle.save()
+    return redirect('posts:main')
+
+def star_detail(request, pk):
+    star_toggle = Post.objects.get(id=pk)
+    if star_toggle.star:
+        star_toggle.star = False
+    else:
+        star_toggle.star = True
+    star_toggle.save()
     return redirect('posts:detail', pk)

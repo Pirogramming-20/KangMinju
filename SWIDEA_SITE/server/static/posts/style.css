@@ -1,0 +1,27 @@
+/* style.css */
+
+.image-container {
+    position: relative;
+}
+
+.star-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30%;
+    height: 30%;
+    z-index: 2;
+}
+
+.fa-star.fill {
+    display: none;
+    color: yellow;
+}
+
+.fa-star.check {
+    display: inline-block;
+}
+img {
+    width: 200px;
+    height: 200px;
+}

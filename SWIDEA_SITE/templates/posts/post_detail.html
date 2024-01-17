@@ -7,7 +7,13 @@
   {% else %}
     <img src="{% static 'posts/image/no_img.png' %}" alt="이미지가 없습니다" />
   {% endif %}
-  <h2>{{post.title}}</h2>
+  <h2>{{post.title}}
+  {% if not post.star %}
+  <i class="fa-regular fa-star outline"></i>
+  {% else %}
+  <i class="fa-solid fa-star fill check"></i>  
+  {% endif %}
+  </h2>
   <p>1)아이디어 관심도<br> {{post.interest}}</p>
   <p>2)예상 개발 툴<br> 
     <a href="{% url 'devtools:detail' post.devtool.pk  %}">

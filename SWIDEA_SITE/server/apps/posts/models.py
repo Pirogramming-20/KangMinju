@@ -11,7 +11,8 @@ class Post(models.Model):
     #예상 개발툴
     #user = models.ForeignKey(LocalUser, on_delete=models.CASCADE, verbose_name='작성자')
     devtool = models.ForeignKey(DevTool, on_delete=models.CASCADE, verbose_name='개발툴')
-    created_date = models.DateTimeField('작성일', auto_now_add=True)
+    updated_date = models.DateTimeField('수정일', auto_created=True,auto_now=True)
+    star = models.BooleanField('찜하기', default = False)
     
     def __str__(self):
         return self.title
