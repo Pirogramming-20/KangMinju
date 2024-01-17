@@ -1,15 +1,22 @@
 {% extends 'base.html' %}
 {%block head%}
-  <title>post_create</title>
+    <title>post_create</title>
 {% endblock %}
 
 {%block content%}
-  <form
-    action="{% url 'posts:create' %}"
-    method="post"
-    enctype="multipart/form-data"
-    >
-    {%csrf_token%} {{form.as_p}}
-    <button class="btn btn-success">등록하기</button>
-  </form>
+    <form
+        action="{% url 'posts:create' %}"
+        method="post"
+        enctype="multipart/form-data"
+        class="create_form">
+        <div class="create_header">
+            <h2>Idea Register</h2>
+            <p>아이디어 등록 페이지 입니다. 당신의 아이디어를 잊지 말고 기록하세요!</p>
+        </div>
+        <div class="create_post">
+            {%csrf_token%}
+            {{form.as_p}}
+            <button class="btn btn-success">등록하기</button>
+        </div>
+    </form>
 {%endblock%}

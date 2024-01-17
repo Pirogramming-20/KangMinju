@@ -37,46 +37,54 @@
 {% block content %}
   <div class="content-wrapper">
     <!-- 글 목록 -->
-    <form method="get" action="">
-      <label for="sort_by">정렬 기준 : &nbsp;</label>
-      <select name="sort_by" id="sort_by">
-        <option value="title">이름순</option>
-        <option value="pk">등록순</option>
-        <option value="updated_date">최신순</option>
-        <option value="interest">관심도순</option>
-        <option value="star">찜하기순</option>
-      </select>
-      <input type="submit" value="적용">
-    </form>
-    {% for post in posts %}
-      <div class="item">
-        {% if post.photo.url != null and post.photo.url != '' %}
-        <div class="image-container">
-          <img src="{{ post.photo.url }}" alt="대체텍스트">
-          <a class="star-icon" href="{% url 'posts:star_list' post.pk %}">
-            {% if not post.star %}
-              <i class="fa-regular fa-star outline"></i>
-            {% else %}
-              <i class="fa-solid fa-star fill check"></i>
-            {% endif %}
-          </a>
+    <div class="text">
+        <h2>Idea List</h2>
+        <p>나의 아이디어를 잊지 말고 기록해보세요</p>
+    </div>
+    <div class="content_header">
+      <form method="get" action="">
+        <label for="sort_by">정렬 기준 : &nbsp;</label>
+        <select name="sort_by" id="sort_by">
+          <option value="title">이름순</option>
+          <option value="pk">등록순</option>
+          <option value="updated_date">최신순</option>
+          <option value="interest">관심도순</option>
+          <option value="star">찜하기순</option>
+        </select>
+        <input type="submit" value="적용">
+      </form>
+    </div>
+    <div class="content_main">
+      {% for post in posts %}
+        <div class="item">
+          {% if post.photo.url != null and post.photo.url != '' %}
+          <div class="image-container">
+            <img src="{{ post.photo.url }}" alt="대체텍스트">
+            <a class="star-icon" href="{% url 'posts:star_list' post.pk %}">
+              {% if not post.star %}
+                <i class="fa-regular fa-star outline"></i>
+              {% else %}
+                <i class="fa-solid fa-star fill check"></i>
+              {% endif %}
+            </a>
+          </div>
+            </a>
+          {% else %}
+            <img src="{% static 'posts/image/no_img.png' %}" alt="이미지가 없습니다">
+          {% endif %}
+          <div class="info">
+            <a href="{% url 'posts:detail' post.pk %}" class="title">
+              <h2>{{ post.title }}</h2>
+            </a>
+            <p class="devtool">예상 개발 툴 : {{ post.devtool }}</p>
+            <p class="interest">아이디어 관심도 :
+              <button class="interest-button" data-post-id="{{ post.pk }}" data-action-type="increase">+</button>
+              <span id="interest-{{ post.pk }}">{{ post.interest }}</span>
+              <button class="interest-button" data-post-id="{{ post.pk }}" data-action-type="decrease">-</button>
+            </p>
+          </div>
         </div>
-          </a>
-        {% else %}
-          <img src="{% static 'posts/image/no_img.png' %}" alt="이미지가 없습니다"> 
-        {% endif %}
-        <div class="info">
-          <a href="{% url 'posts:detail' post.pk %}" class="title">
-            {{ post.title }}
-          </a>
-          <p class="devtool">예상 개발 툴 : {{ post.devtool }}</p>
-          <p class="interest">아이디어 관심도 :
-            <button class="interest-button" data-post-id="{{ post.pk }}" data-action-type="increase">+</button>
-            <span id="interest-{{ post.pk }}">{{ post.interest }}</span>
-            <button class="interest-button" data-post-id="{{ post.pk }}" data-action-type="decrease">-</button>
-          </p>
-        </div>
-      </div>
-    {% endfor %}
+      {% endfor %}
+    </div>
   </div>
 {% endblock %}

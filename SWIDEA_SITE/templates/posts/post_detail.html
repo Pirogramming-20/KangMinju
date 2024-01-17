@@ -2,29 +2,38 @@
 {% load static %}
 
 {% block content %}
-  {% if post.photo.url != '' %}
-    <img src="{{post.photo.url}}" alt="개발툴 이미지" />
-  {% else %}
-    <img src="{% static 'posts/image/no_img.png' %}" alt="이미지가 없습니다" />
-  {% endif %}
-  <h2>{{post.title}}
-  {% if not post.star %}
-  <i class="fa-regular fa-star outline"></i>
-  {% else %}
-  <i class="fa-solid fa-star fill check"></i>  
-  {% endif %}
-  </h2>
-  <p>1)아이디어 관심도<br> {{post.interest}}</p>
-  <p>2)예상 개발 툴<br> 
-    <a href="{% url 'devtools:detail' post.devtool.pk  %}">
-    {{post.devtool}}
-    </a>      
-  </p>
-  <p>3)아이디어 설명<br> {{post.content}}</p>
-  <form action="{% url 'posts:delete' post.pk%}" method="POST">
-    {%csrf_token%}
-    <button type="submit" class="btn btn-danger">삭제</button>
-    <a href="{% url 'posts:main'%}" class="btn btn-primary">목록</a>
-    <a href="{% url 'posts:update' post.pk %}" class="btn btn-primary">수정</a>
-  </form>
+  <div class="detail_wrap">
+      <div class="detail_div idea_detail">
+        <div class="detail_img">
+          {% if post.photo.url != '' %}
+          <img src="{{post.photo.url}}" alt="개발툴 이미지" />
+                {% else %}
+          <img src="{% static 'posts/image/no_img.png' %}" alt="이미지가 없습니다" />
+                {% endif %}
+        </div>
+      <div class="detail_right">
+        <h2>{{post.title}}
+        {% if not post.star %}
+        <i class="fa-regular fa-star outline"></i>
+        {% else %}
+        <i class="fa-solid fa-star fill check"></i>
+        {% endif %}
+        </h2>
+        <p>1) 아이디어 관심도</p> <p>{{post.interest}}</p>
+        <p>2) 예상 개발 툴</p>
+        <p>
+          <a href="{% url 'devtools:detail' post.devtool.pk  %}" class="go_dev">
+          {{post.devtool}}
+          </a>
+        </p>
+        <p>3) 아이디어 설명</p> <p>{{post.content}}</p>
+      </div>
+      </div>
+      <form action="{% url 'posts:delete' post.pk%}" method="POST" id="detail_form">
+        {%csrf_token%}
+        <button type="submit" class="btn btn-danger">삭제</button>
+        <a href="{% url 'posts:main'%}" class="btn btn-primary">목록</a>
+        <a href="{% url 'posts:update' post.pk %}" class="btn btn-primary">수정</a>
+      </form>
+  </div>
 {% endblock content %}

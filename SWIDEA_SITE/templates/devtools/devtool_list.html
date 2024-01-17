@@ -6,17 +6,16 @@
 {%endblock%}
 
 {%block content%}
-
-  <div class="content-wrapper">
+<div class="content-wrapper">
+    <hr>
     <!-- 글 목록 -->
     {% for devtool in devtools%}
-    <div class="item">
-      <div class="info">
-          <a href="{% url 'devtools:detail' devtool.pk %}">{{devtool.name}}</a><br>
-          {{devtool.kind}}<br>
-          {{devtool.dev_content}}
-      </div>
+    <div class="dev_item">
+          <p><a href="{% url 'devtools:detail' devtool.pk %}">{{devtool.name}}</a></p>
+          <p>{{devtool.kind}}</p>
+          <p>{{devtool.dev_content}}</p>
     </div>
+    <hr>
     {% endfor %}
   </div>
 {%endblock%}

@@ -20,8 +20,9 @@ def create(request):
 
 def detail(request, pk):
     devtool = DevTool.objects.get(id=pk)
-    ctx = {'devtool' : devtool}
-    return render(request, 'devtools/devtool_detail.html', ctx)
+    related_posts = devtool.post_set.all()
+    ctx = {'devtool':devtool, 'related_posts':related_posts}
+    return render(request,'devtools/devtool_detail.html',ctx)
 
 def delete(request,pk):
     if request.method == 'POST':

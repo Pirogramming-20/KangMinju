@@ -4,12 +4,20 @@
   <title>post_detail</title>
 {%endblock%}
 
+
 {%block content%}
   <form
     action="{% url 'devtools:update' pk %}"
     method="post"
+    class="create_form"
   >
-    {%csrf_token%} {{form.as_p}}
-    <button class="btn btn-primary">수정 완료</button>
-  </form>
+  <div class="create_header">
+    <h2>DevTool Detail Update</h2>
+    <p>개발툴 세부내용 페이지 입니다. 자신이 다룰 수 있는 개발툴에 대한 상세한 내용을 확인 보세요.</p>
+  </div>
+  <div class="create_post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button class="btn btn-success">수정완료</button>
+  </div>
 {%endblock%}

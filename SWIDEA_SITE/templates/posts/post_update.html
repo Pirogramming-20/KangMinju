@@ -8,9 +8,15 @@
   <form
     action="{% url 'posts:update' pk %}"
     method="post"
-    enctype="multipart/form-data"
+    class="create_form"
   >
-    {%csrf_token%} {{form.as_p}}
-    <button class="btn btn-primary">수정 완료</button>
-  </form>
+  <div class="create_header">
+    <h2>Idea Detail Update</h2>
+    <p>아이디어 세부내용 페이지 입니다. 아이디어를 구체화 하거나 내용을 변경해 보세요.</p>
+  </div>
+  <div class="create_post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button class="btn btn-success">수정완료</button>
+  </div>
 {%endblock%}
