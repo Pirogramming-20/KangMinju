@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block head%}
+  <title>Documents</title>
+{%endblock%}
+
+{%block content%}
+
+  <div class="content-wrapper">
+    <!-- 글 목록 -->
+    {% for post in posts%}
+    <div class="item">
+      {% if post.photo.url != null and post.photo.url != ''%}
+      <img src="{{post.photo.url}}" alt="대체텍스트"> 
+      {%else %}
+      <img src="{% static 'posts/image/no_img.png'%}" alt="이미지가 없습니다"> 
+      {%endif%}
+      <div class="info">
+        <a href="{% url 'posts:detail' post.pk %}" class="title">
+          {{post.title}}
+        </a>
+        <p class="region">예상 개발 툴 : </p>
+        <p class="price">아이디어 관심도 : {{post.interest}}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{%endblock%}
