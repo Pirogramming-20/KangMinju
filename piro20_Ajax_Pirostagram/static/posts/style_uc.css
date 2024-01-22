@@ -1,0 +1,35 @@
+.uc_header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.uc_form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    margin-top: 50px;
+}
+
+.uc_post {
+    padding: 20px;
+    background-color: #fff;
+}
+
+.uc_post button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.uc_post button:hover {
+    background-color: #218838;
+}

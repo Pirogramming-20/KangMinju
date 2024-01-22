@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+  <title>Documents</title>
+  <link rel="stylesheet" href="{% static 'posts/style_detail.css' %}" />
+  <script src="{% static 'posts/like.js' %}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{% endblock %}
+
+{% block content %}
+  <div class="detail_wrap">
+    <div class="detail_div idea_detail">
+      <div class="detail_img">
+        {% if post.photo.url != '' %}
+        <img src="{{ post.photo.url }}" alt="" />
+        {% else %}
+        <img src="{% static 'posts/image/no_img.png' %}" alt="이미지가 없습니다" />
+        {% endif %}
+      </div>
+      <div class="detail_right">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.content }}</p>
+        <p>{{ post.like }}명이 좋아합니다</p>
+      </div>
+    </div>
+    <form action="{% url 'delete' post.pk %}" method="POST" id="detail_form">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">삭제</button>
+      <a href="{% url 'main' %}" class="btn btn-primary">목록</a>
+      <a href="{% url 'update' post.pk %}" class="btn btn-primary">수정</a>
+    </form>
+  </div>
+  <div class="comment-container">
+    <textarea id="commentInput-{{ post.id }}" placeholder="댓글을 입력하세요"></textarea>
+    <button onclick="onSubmitComment({{ post.id }})">댓글 등록</button>
+    <div id="commentList-{{ post.id }}"></div>
+  </div>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    {% for post in posts %}
+        getComments({{ post.id }});
+    {% endfor %}
+  });
+  </script>
+{% endblock %}
+

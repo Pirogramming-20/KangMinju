@@ -1,0 +1,65 @@
+/* body {
+    background-color: lightblue
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+} */
+@font-face {
+    font-family: 'seolleimcool-SemiBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2312-1@1.1/seolleimcool-SemiBold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family: 'seolleimcool-SemiBold';
+    background: #fafafa;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #fff;
+    border-bottom: 1px solid #dbdbdb;
+    height: 72px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+}
+
+header p {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.right_header {
+    display: flex;
+}
+
+header a {
+    margin-left: 15px;
+    text-decoration: none;
+    background: -webkit-linear-gradient(left, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D, #F56040, #F77737, #FCAF45, #FFDC80);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+main {
+    display: flex;
+    justify-content: center;
+}
+
+.wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+hr {
+    margin: 0;
+    border: none;
+    border-top: 1px solid #dbdbdb;
+}

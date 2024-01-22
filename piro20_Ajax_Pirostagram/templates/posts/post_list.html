@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block head %}
+  <title>Documents</title>
+  <link rel="stylesheet" href="{% static 'posts/style_list.css' %}" />
+  <script src="{% static 'posts/like.js' %}"></script>
+  <script src="https://kit.fontawesome.com/d206971f73.js" crossorigin="anonymous"></script>
+{%endblock%}
+
+{%block content%}
+<div class="wrap">
+    <div class="content_main">
+        {% for post in posts %}
+          <div class="item">
+            {% if post.photo.url != null and post.photo.url != '' %}
+            <div class="image-container">
+              <img src="{{ post.photo.url }}" alt="대체텍스트">
+            </div>
+              </a>
+            {% else %}
+              <img src="{% static 'posts/image/no_img.png' %}" alt="이미지가 없습니다">
+            {% endif %}
+            <div class="info post-id-{{ post.id }}">
+                <a href="{% url 'detail' post.pk %}"><h2>{{ post.title }}</h2></a>
+              </a>
+              <p class="devtool">{{ post.content }}</p>
+              <div class="like_div">
+                <i class="fa-regular fa-heart" onclick="onClickLike({{post.id}}, 'like')"></i>
+                <div class="btn btn-primary post__like">Like {{ post.like }}</div>
+            </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+</div>
+{%endblock%}
+

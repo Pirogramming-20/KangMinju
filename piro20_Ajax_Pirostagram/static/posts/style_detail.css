@@ -1,0 +1,89 @@
+.detail_wrap {
+    margin-top: 50px;
+}
+img {
+    width: 800px;
+    height: 800px;
+}
+#detail_form {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+}
+
+#detail_form button,
+#detail_form a {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    
+    }
+
+#detail_form .btn-danger {
+    background-color: #dc3545;
+}
+
+#detail_form .btn-danger:hover {
+    background-color: #c82333;
+}
+
+#detail_form .btn-primary {
+    background-color: #007bff;
+}
+
+#detail_form .btn-primary:hover {
+    background-color: #0069d9;
+}
+
+.comment-container {
+    margin-top: 40px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.comment-container textarea {
+    width: 97%;
+    height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    resize: none;
+}
+
+.comment-container button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.comment-container button:hover {
+    background-color: #0069d9;
+}
+.detail_img {
+    width: 800px;
+    flex: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    margin-right: 20px;
+}
+
+.detail_img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
